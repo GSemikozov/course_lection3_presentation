@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Lesson 3. HTML/CSS Course</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="lesson3.css">
+    <style>
+        .shower {
+            --slide-ratio: calc(16 / 9);
+            --color-key: #b20600;
+        }
+    </style>
+</head>
+<body class="shower list grid">
+    <header class="caption">
+        <h1>Лекция 3</h1>
+        <p>CSS-grid</p>
+    </header>
+
+<!--    <section class="slide">-->
+<!--        <h2 class="shout">position</h2>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Позиционирование. Static</h2>-->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <pre>-->
+<!--                    <code><span class="property">position</span><span class="punctuation">:</span> static<span class="punctuation">;</span></code>-->
+<!--                </pre>-->
+<!--                <ul>-->
+<!--                    <li>Значение по умолчанию</li>-->
+<!--                    <li>Не позиционируется никаким специальным образом</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Позиционирование. Relative</h2>-->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <pre>-->
+<!--                    <code><span class="property">position</span><span class="punctuation">:</span> relative<span class="punctuation">;</span></code>-->
+<!--                </pre>-->
+<!--                <ul>-->
+<!--                    <li>Значения <mark class="item secondary">top</mark>, <mark class="item secondary">left</mark>, <mark class="item secondary">right</mark>, <mark class="item secondary">bottom</mark> смещают элемент относительно начального положения</li>-->
+<!--                    <li>Смещение не влияет на остальные элементы</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Позиционирование. Absolute</h2>-->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <pre>-->
+<!--                    <code><span class="property">position</span><span class="punctuation">:</span> absolute<span class="punctuation">;</span></code>-->
+<!--                </pre>-->
+<!--                <ul>-->
+<!--                    <li>Удаляется со своего места и позиционируется заново - с помощью значений <mark class="item secondary">top</mark>, <mark class="item secondary">left</mark>, <mark class="item secondary">right</mark>, <mark class="item secondary">bottom</mark></li>-->
+<!--                    <li>Позиционируется относительно ближайшего родителя c <br><mark class="item secondary">position: relative | absolute | fixed</mark>, <br>если такого нет, то относительно документа</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Позиционирование. Fixed</h2>-->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <pre>-->
+<!--                    <code><span class="property">position</span><span class="punctuation">:</span> fixed<span class="punctuation">;</span></code>-->
+<!--                </pre>-->
+<!--                <ul>-->
+<!--                    <li>Удаляется со своего места и позиционируется заново - с помощью значений <mark class="item secondary">top</mark>, <mark class="item secondary">left</mark>, <mark class="item secondary">right</mark>, <mark class="item secondary">bottom</mark></li>-->
+<!--                    <li>Позиционируется относительно родителя с установленными значениями <mark class="item secondary">transform</mark>, <mark class="item secondary">filter</mark> или <mark class="item secondary">perspective</mark></li>-->
+<!--                    <li>Если таких нет, то относительно окна браузера</li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Позиционирование. Sticky</h2>-->
+<!--        <div class="content">-->
+<!--            <div>-->
+<!--                <pre>-->
+<!--                    <code><span class="property">position</span><span class="punctuation">:</span> sticky<span class="punctuation">;</span></code>-->
+<!--                </pre>-->
+<!--                <ul>-->
+<!--                    <li>Не влияет на другие элементы</li>-->
+<!--                    <li>Позиционируется относительно скроллящегося родителя</li>-->
+<!--                    <li><a href="https://caniuse.com/?search=sticky" target="_blank">Can i use</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section class="slide">
+        <h2 class="shout">display: grid;</h2>
+    </section>
+
+    <section class="slide slide_type_grid">
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item grid__item_type_line">
+            <span class="grid__description_line">Линия</span>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+        </div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item grid__item_type_track">
+            <span class="grid__description">Трек</span>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+        </div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item"></div>
+        <div class="grid__item grid__item_type_area">
+            <span class="grid__description_area">Область</span>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+            <div class="grid__item_subgrid"></div>
+        </div>
+        <div class="grid__item grid__item_type_item">
+            <span class="grid__description_elem">Элемент</span>
+        </div>
+
+        <span class="grid__name">Контейнер</span>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Контейнер</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Контейнер</h2>
+        <div class="content">
+            <div>
+                <pre>
+                    <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                    <code><span class="property">  display</span><span class="punctuation">:</span> grid | inline-grid<span class="punctuation">;</span></code>
+                    <code><span class="punctuation">}</span></code>
+                </pre>
+
+                <p>
+                    <mark class="important item">grid</mark> - блочный grid</mark>
+                    <br>
+                    <mark class="important item">inline-grid</mark> - ведет себя снаружи как <mark class="secondary item">inline</mark>, а внутри как <mark class="secondary item">grid</mark>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Строки и столбцы</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы</h2>
+        <div class="content">
+            <p><mark class="secondary item">Строки и столбцы</mark> - пространство между двумя горизонтальными или вертикальными линиями грида. Так же называют <mark class="secondary item">треком</mark>. </p>
+            <img class="image_centered" style="height: 60%;" src="./pictures/track.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы</h2>
+        <div class="content">
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">    grid-template-rows</span><span class="punctuation">:</span> track-size ...<span class="punctuation">;</span><span class="punctuation"> //Размер строк</span> </code>
+                <code><span class="property">    grid-template-columns</span><span class="punctuation">:</span> track-size ...<span class="punctuation">;</span><span class="punctuation"> //Размер столбцов</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+
+            <p><mark class="secondary item">track-size</mark> - проценты, фиксированный размер (например, пиксели) или <mark class="secondary item">fr</mark></p>
+            <p><mark class="secondary item">fr</mark> - часть свободного пространства в контейнере. Вычисляется после того, как рассчитаются все фиксированные элементы</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы</h2>
+        <div class="content">
+            <pre class="text-area">
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">    grid-template-rows</span><span class="punctuation">:</span> <input id="grid-line-rows" type="text" value="50px 50px 100px"><span class="punctuation">;</span></code>
+                <code><span class="property">    grid-template-columns</span><span class="punctuation">:</span> <input id="grid-line-columns" type="text" value="100px 25% 1fr"><span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+
+            <div class="grid_example" id="grid-line-example">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Repeat</h2>
+        <div class="content">
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">    grid-template-rows</span><span class="punctuation">:</span> 50px 50px 50px 50px 50px 50px 50px 50px 50px 50px<span class="punctuation">;</span></code>
+                <code><span class="property">    grid-template-columns</span><span class="punctuation">:</span> 50px 1fr 1fr 1fr<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <p>Сокращаем! Повторяющиеся части можно заменить с помощью <mark class="item important">repeat()</mark></p>
+            <small>
+                <pre>
+                    <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                    <code><span class="property">    grid-template-rows</span><span class="punctuation">:</span> repeat(10, 50px)<span class="punctuation">;</span></code>
+                    <code><span class="property">    grid-template-columns</span><span class="punctuation">:</span> 50px repeat(3, 1fr)<span class="punctuation">;</span></code>
+                    <code><span class="punctuation">}</span></code>
+                </pre>
+            </small>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Отступы</h2>
+        <div class="content">
+            <p><mark class="important item">gap</mark> - формирует отступы между столбцами и строками</p>
+            <pre>
+                <code><span class="property">gap</span><span class="punctuation">:</span> [row-gap] [column-gap]<span class="punctuation">;</span><span class="punctuation"> //Горизонтальный отступ, потом вертикальный</span></code>
+                <code><span class="property">gap</span><span class="punctuation">:</span> [gap]<span class="punctuation">;</span><span class="punctuation"> //По горизонтали и по вертикали одинаковый отступ</span></code>
+            </pre>
+            или
+            <pre>
+                <code><span class="property">row-gap</span><span class="punctuation">:</span> [row-gap]<span class="punctuation">;</span></code>
+                <code><span class="property">column-gap</span><span class="punctuation">:</span> [column-gap]<span class="punctuation">;</span></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Отступы</h2>
+        <div class="content">
+            <pre class="text-area">
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">  grid-template-rows</span><span class="punctuation">:</span> 50px 1fr 1fr 50px;<span class="punctuation">;</span></code>
+                <code><span class="property">  grid-template-columns</span><span class="punctuation">:</span> 20px 40px 20px<span class="punctuation">;</span></code>
+                <code><span class="property">  gap</span><span class="punctuation">:</span> <input id="grid-gap" type="text" value="10px 30px"><span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <div class="grid_example_2" id='grid-gap-example'>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="content">
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">    justify-items</span><span class="punctuation">:</span> start | end | center | stretch<span class="punctuation">;</span></code>
+                <code><span class="property">    align-items</span><span class="punctuation">:</span> start | end | center | stretch<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <p><mark class="item important">align-items</mark> выравнивает элементы по <i><mark class="item secondary">вертикальной оси</mark></i>.</p>
+            <p><mark class="item important">justify-items</mark> выравнивает элементы по <i><mark class="item secondary">горизонтальной оси</mark></i>.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="columns two" style="height: 100%">
+            <div class='slide_type_grid_2' id="grid-alignment">
+                <div class="slide__background"></div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+            </div>
+
+            <div>
+                <span class="slide__title">justify-items:</span>
+                <select name="select" id="justify-items">
+                    <option value="start">start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch" selected>stretch</option> 
+                </select>
+                <br>
+                <span class="slide__title">align-items:</span>
+                <select name="select" id="align-items">
+                    <option value="start">start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch" selected>stretch</option> 
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="content">
+            <p><mark class="item important">place-items</mark> - сокращение для <mark class="item secondary">align-items</mark> + <mark class="item secondary">justify-items</mark>.</p>
+            <pre>
+                <code><span class="property">place-items</span><span class="punctuation">:</span> [align-items] / [justify-items]<span class="punctuation">;</span></code>
+            </pre>
+
+            Если второе значение не будет задано, то первое будет использоваться для обоих значений.
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="content">
+            <small>
+                <p>
+                    Eсли размеры элемента грида заданы в фиксированных величинах (например, в <mark class="item secondary">px</mark>), то элементы грида могут заполнять контейнер не полностью.
+                    В таком случае, можно задать выравнивание контента относительно контейнера.
+                </p>
+            </small>
+
+            <p><mark class="item important">justify-content</mark> выравнивает элементы по <i><mark class="item secondary">горизонтальной оси</mark></i>.</p>
+            <p><mark class="item important">align-content</mark> выравнивает элементы по <i><mark class="item secondary">вертикальной оси</mark></i>.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="columns two" style="height: 100%">
+            <div class='slide_type_grid_3' id='grid_3'>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+                <div class="grid__item grid__item-alignment">item</div>
+            </div>
+
+            <div>
+                <span class="slide__title">justify-content:</span>
+                <select name="select" id="justify-content">
+                    <option value="start" selected>start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch">stretch</option> 
+                    <option value="space-around">space-around</option> 
+                    <option value="space-between">space-between</option> 
+                    <option value="space-evenly">space-evenly</option> 
+                </select>
+                <br>
+                <span class="slide__title">align-content:</span>
+                <select name="select" id="align-content">
+                    <option value="start" selected>start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch">stretch</option> 
+                    <option value="space-around">space-around</option> 
+                    <option value="space-between">space-between</option> 
+                    <option value="space-evenly">space-evenly</option> 
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="content">
+            <p><mark class="item important">place-content</mark> - сокращение для <mark class="item secondary">align-content</mark> + <mark class="item secondary">justify-content</mark>.</p>
+            <pre>
+                <code><span class="property">place-content</span><span class="punctuation">:</span> [align-content] / [justify-content]<span class="punctuation">;</span></code>
+            </pre>
+
+            Если второе значение не будет задано, то первое будет использоваться для обоих значений.
+        </div>
+    </section>
+
+
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <section class="slide">
+        <h2 class="shout">Линия</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Линия</h2>
+        <div class="content">
+            <p>Разделяющие линии, которые формируют структуру грида. Бывают горизонтальными и вертикальными.</p>
+            <img class="image_centered" style="height: 50%;" src="./pictures/grid.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Линия</h2>
+        <div class="content">
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code><span class="property">  grid-template-columns</span><span class="punctuation">:</span> 200px 25% 1fr<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <img class="image_full_width image-grid" src="./pictures/grid_example.png">
+            <p>Каждой линии присваивается отрицательное и положительное значение, начиная с 1 и -1.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Линия</h2>
+        <div class="content">
+            <p>Можно задать произвольное название (их может быть больше, чем одно).</p>
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code>   <span class="property">grid-template-columns</span><span class="punctuation">:</span> [first one] 200px [second two два] 1fr [end]<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <img class="image_full_width image-grid" src="./pictures/grid_example_names_1.png">
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2 class="shout">Ячейка</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Ячейка</h2>
+        <div class="content">
+            <pre>
+                <code><span class="rule">.grid__item </span><span class="punctuation">{</span></code>
+                <code><span class="property">    grid-column-start</span><span class="punctuation">:</span> [line-number] | [line-name]<span class="punctuation">;</span></code>
+                <code><span class="property">    grid-column-end</span><span class="punctuation">:</span> [line-number] | [line-name]<span class="punctuation">;</span></code>
+                <code><span class="property">    grid-row-start</span><span class="punctuation">:</span> [line-number] | [line-name]<span class="punctuation">;</span></code>
+                <code><span class="property">    grid-row-end</span><span class="punctuation">:</span> [line-number] | [line-name]<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+            <small>
+                <p>Если не указано <mark class="item secondary">grid-column-start</mark> или <mark class="item secondary">grid-column-end</mark>, то размер ячейки будет равен одной колонке или строке.</p>
+            </small>
+        </div>
+    </section>
+
+    <section class="slide">
+        <div class="columns two" style="height: 100%">
+            <div class='slide_type_grid_1'>
+                <div class="slide__background"></div>
+                <div class="grid__item grid__item_selected" id="grid__item"></div>
+            </div>
+            <div>
+                <span class="slide__title">grid-column-start:</span>
+                <select name="select" id="grid-column-start">
+                    <option value="-7">-7</option> 
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option> 
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="1" selected>1</option> 
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option> 
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <br>
+                <span class="slide__title">grid-column-end:</span>
+                <select name="select" id="grid-column-end">
+                    <option value="-7">-7</option> 
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option> 
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="1">1</option> 
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option> 
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+                <br>
+                <span class="slide__title">grid-row-start:</span>
+                <select name="select" id="grid-row-start">
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option> 
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="1" selected>1</option> 
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option> 
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="one">one</option>
+                    <option value="two">two</option>
+                    <option value="three">three</option>
+                    <option value="four">four</option>
+                    <option value="five">five</option>
+                    <option value="six">six</option>
+                </select>
+                <br>
+                <span class="slide__title">grid-row-end:</span>
+                <select name="select" id="grid-row-end">
+                    <option value="-6">-6</option>
+                    <option value="-5">-5</option>
+                    <option value="-4">-4</option> 
+                    <option value="-3">-3</option>
+                    <option value="-2">-2</option>
+                    <option value="-1">-1</option>
+                    <option value="1">1</option> 
+                    <option value="2" selected>2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option> 
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="one">one</option>
+                    <option value="two">two</option>
+                    <option value="three">three</option>
+                    <option value="four">four</option>
+                    <option value="five">five</option>
+                    <option value="six">six</option>
+                </select>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Ячейка</h2>
+        <div class="content">
+            <p>
+                <mark class="important item">grid-column</mark> - сокращение для <mark class="secondary item">grid-column-start</mark> + <mark class="secondary item">grid-column-end</mark>
+                <mark class="important item">grid-row</mark> - <mark class="secondary item">grid-row-start</mark> + <mark class="secondary item">grid-row-end</mark>
+            </p>
+
+            <pre>
+                <code><span class="rule">.grid__item </span><span class="punctuation">{</span></code>
+                <code><span class="property">  grid-column</span><span class="punctuation">:</span> [start-line] / [end-line]<span class="punctuation">;</span></code>
+                <code><span class="property">  grid-row</span><span class="punctuation">:</span> [start-line] / [end-line]<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Ячейка</h2>
+        <div class="content">
+            <p>
+                <mark class="important item">grid-area</mark> - сокращение для <mark class="secondary item">grid-column-start</mark> + <mark class="secondary item">grid-column-end</mark> +<br><mark class="secondary item">grid-row-start</mark> + <mark class="secondary item">grid-row-end</mark>
+            </p>
+
+            <pre>
+                <code><span class="rule">.grid__item </span><span class="punctuation">{</span></code>
+                <code><span class="property">  grid-area</span><span class="punctuation">:</span> [row-start] / [column-start] / [row-end] / [column-end]<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Выравнивание</h2>
+        <div class="content">
+            <p>Выравнивание элемента грида внутри ячейки: </p>
+            <p>
+                <pre>
+                    <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                        <code><span class="property">    align-self</span><span class="punctuation">:</span> start | end | center | stretch<span class="punctuation">;</span></code>
+                        <code><span class="property">    justify-self</span><span class="punctuation">:</span> start | end | center | stretch<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+                </p>
+            <p><mark class="item important">align-self</mark> выравнивает элементы по <i><mark class="item secondary">вертикальной оси</mark></i>.</p>
+            <p><mark class="item important">justify-self</mark> выравнивает элементы по <i><mark class="item secondary">горизонтальной оси</mark></i>.</p>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Ячейка. Выравнивание</h2>
+        <div class="columns two" style="height: 100%">
+            <div class='slide_type_grid_4'>
+                <div class="grid__item grid__item-alignment" id="grid-item">May the force</div>
+                <div class="grid__item grid__item-alignment">be</div>
+
+                <div class="grid__item grid__item-alignment">with</div>
+                <div class="grid__item grid__item-alignment">you</div>
+            </div>
+
+            <div>
+                <span class="slide__title">justify-self:</span>
+                <select name="select" id="justify-self">
+                    <option value="start" selected>start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch">stretch</option> 
+                </select>
+                <br>
+                <span class="slide__title">align-self:</span>
+                <select name="select" id="align-self">
+                    <option value="start" selected>start</option> 
+                    <option value="end">end</option>
+                    <option value="center">center</option>
+                    <option value="stretch">stretch</option> 
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Ячейка. Выравнивание</h2>
+        <div class="content">
+            <p><mark class="item important">place-self</mark> - сокращение для <mark class="item secondary">align-self</mark> + <mark class="item secondary">justify-self</mark>.</p>
+            <pre>
+                <code><span class="property">place-self</span><span class="punctuation">:</span> [align-self] / [justify-self]<span class="punctuation">;</span></code>
+            </pre>
+
+            Если второе значение не будет задано, то первое будет использоваться для обоих значений.
+        </div>
+    </section>
+
+
+
+<!--    <section class="slide">-->
+<!--        <h2>Неявный грид</h2>-->
+<!--        <div class="content">-->
+<!--            <div class="columns two" style="height: 100%">-->
+<!--                <div>-->
+<!--                    <pre>-->
+<!--                        <code><span class="rule">.grid </span><span class="punctuation">{</span></code>-->
+<!--                        <code>   <span class="property">grid-template-columns</span><span class="punctuation">:</span> 40px 40px<span class="punctuation">;</span></code>-->
+<!--                        <code>   <span class="property">grid-template-rows</span><span class="punctuation">:</span> 60px 60px <span class="punctuation">;</span></code>-->
+<!--                        <code><span class="punctuation">}</span></code>-->
+<!--                    </pre>-->
+
+<!--                    <pre>-->
+<!--                        <code><span class="punctuation">//Эта ячейка за пределами грида</span></code>-->
+<!--                        <code><span class="rule">.grid__item </span><span class="punctuation">{</span></code>-->
+<!--                        <code>   <span class="property">grid-column</span><span class="punctuation">:</span> 1/2<span class="punctuation">;</span></code>-->
+<!--                        <code>   <span class="property">grid-row</span><span class="punctuation">:</span> 4/5 <span class="punctuation">;</span></code>-->
+<!--                        <code><span class="punctuation">}</span></code>-->
+<!--                    </pre>-->
+<!--                </div>-->
+
+<!--                <div class='slide_type_grid_7'>-->
+<!--                    <div class="slide__background"></div>-->
+<!--                    <div class="grid__item">item</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+<!--    <section class="slide">-->
+<!--        <h2>Неявный грид</h2>-->
+<!--        <div class="content">-->
+<!--            <p><mark class="item important">grid-auto-columns, grid-auto-rows</mark> определяют размер <mark class="item secondary">неявных</mark> треков. Неявные треки появляются при явном позиционировании ячейки, которые находятся за пределами сетки</p>-->
+<!--            <pre>-->
+<!--                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>-->
+<!--                <code>   <span class="property">grid-auto-columns</span><span class="punctuation">:</span> [track-size] ...<span class="punctuation">;</span></code>-->
+<!--                <code>   <span class="property">grid-auto-rows</span><span class="punctuation">:</span> [track-size] ...<span class="punctuation">;</span></code>-->
+<!--                <code><span class="punctuation">}</span></code>-->
+<!--            </pre>-->
+<!--        </div>-->
+<!--    </section>-->
+
+
+
+<!--    <section class="slide">-->
+<!--        <h2>Неявный грид</h2>-->
+<!--        <div class="content" style="height: 100%">-->
+<!--            <div class="columns two" style="height: 100%">-->
+<!--                <div>-->
+<!--                    <pre>-->
+<!--                        <code><span class="rule">.grid </span><span class="punctuation">{</span></code>-->
+<!--                        <code>   <span class="punctuation">...</span></code>-->
+<!--                        <code>   <span class="property">grid-auto-columns</span><span class="punctuation">:</span> 100px<span class="punctuation">;</span></code>-->
+<!--                        <code><span class="punctuation">}</span></code>-->
+<!--                    </pre>-->
+<!--                </div>-->
+
+<!--                <div class='slide_type_grid_8'>-->
+<!--                    <div class="slide__background"></div>-->
+<!--                    <div class="grid__item">item</div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section class="slide">
+        <h2>Строки и столбцы. Автозаполнение</h2>
+        <div class="content" style="height: 100%">
+            <p>Если явно не задавать положение ячейки, то ячейки заполняются в соответствии с алгоритмом автозаполнения.</p>
+            <small>
+                <ul>
+                    <li><mark class="item secondary">row</mark> - заполяет строки поочередно, добавляя новые при необходимости</li>
+                    <li><mark class="item secondary">column</mark> - заполняет колонки поочередно, добавляя новые при необходимости</li>
+                    <li><mark class="item secondary">dence</mark> - пытается заполнить дыры в сетке, если появляются мелкие элементы позже</li>
+                </ul>
+            </small>
+
+            <pre>
+                <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                <code>   <span class="property">grid-auto-flow</span><span class="punctuation">:</span> row | column | row dense | column dense<span class="punctuation">;</span></code>
+                <code><span class="punctuation">}</span></code>
+            </pre>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Строки и столбцы. Автозаполнение</h2>
+        <div class="columns two" style="height: 100%">
+            <div class='slide_type_grid_10' id="grid-flow">
+                <div class="grid__item grid__item-alignment" style="grid-column: 1 / 3;">1</div>
+                <div class="grid__item grid__item-alignment" style="grid-column: 1 / 3;">2</div>
+                <div class="grid__item grid__item-alignment">3</div>
+                <div class="grid__item grid__item-alignment">4</div>
+                <div class="grid__item grid__item-alignment">5</div>
+            </div>
+
+            <div>
+                <span class="slide__title">grid-auto-flow:</span>
+                <select name="select" id="grid-auto-flow">
+                    <option value="row" selected>row</option> 
+                    <option value="column">column</option>
+                    <option value="row dense">row dense</option>
+                    <option value="column dense">column dense</option> 
+                </select>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="slide">
+        <h2 class="shout">Область</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Область. grid-template-areas</h2>
+        <div class="content" style="height: 100%;">
+            <p>
+                <mark class="important item">grid-template-areas</mark> определяет именнованные области в контейнере<br>
+                Поместить элемент в область можно свойством <mark class="important item">grid-area</mark>.
+            </p>
+            <pre>
+                <code><span class="property">grid-template-areas</span><span class="punctuation">:</span> "[grid-area-name] | . | none | ..."</code>
+            </pre>
+
+            <ul>
+                <li><mark class="item secondary">.</mark> - пустая ячейка</li>
+                <li><mark class="item secondary">none</mark> - нет никакой области</li>
+                <li><mark class="item secondary">grid-area-namе</mark> - название области</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Область. grid-template-areas</h2>
+        <div class="content" style="height: 100%;">
+            <div class="columns two">
+                <small>
+                    <pre class="small">
+                        <code><span class="rule">.grid </span><span class="punctuation">{</span></code>
+                        <code><span class="property">  display</span><span class="punctuation">:</span> grid<span class="punctuation">;</span></code>
+                        <code><span class="property">  grid-template-columns</span><span class="punctuation">:</span> 120px 90px 1fr 1fr<span class="punctuation">;</span></code>
+                        <code><span class="property">  grid-template-rows</span><span class="punctuation">:</span> repeat(4, 1fr)<span class="punctuation">;</span></code>
+                        <code><span class="property">  grid-template-areas</span><span class="punctuation">:</span> "header header header header"</code>
+                        <code>                       "sidebar . main"</code>
+                        <code>                       "sidebar . main"</code>
+                        <code>                       "footer footer footer footer"<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+                </small>
+                <small>
+                    <pre class="small">
+                        <code><span class="rule">.grid__header </span><span class="punctuation">{</span></code>
+                        <code><span class="property">  grid-area</span><span class="punctuation">:</span> header<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+
+                    <pre class="small">
+                        <code><span class="rule">.grid__main </span><span class="punctuation">{</span></code>
+                        <code><span class="property">  grid-area</span><span class="punctuation">:</span> main<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+
+                    <pre class="small">
+                        <code><span class="rule">.grid__sidebar </span><span class="punctuation">{</span></code>
+                        <code><span class="property">  grid-area</span><span class="punctuation">:</span> sidebar<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+
+                    <pre class="small">
+                        <code><span class="rule">.grid__footer </span><span class="punctuation">{</span></code>
+                        <code><span class="property">  grid-area</span><span class="punctuation">:</span> footer<span class="punctuation">;</span></code>
+                        <code><span class="punctuation">}</span></code>
+                    </pre>
+                </small>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Область</h2>
+        <div class="content" style="height: 100%;">
+            <div class='slide_type_grid_6'>
+                <div class="grid__header">header</div>
+                <div class="grid__main">main</div>
+                <div class="grid__sidebar">sidebar</div>
+                <div class="grid__footer">footer</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Гриды. Поддержка</h2>
+        <img class="image_full_width image_centered" src="./pictures/support.png">
+        <div>Информация с <a href="https://caniuse.com/?search=grid">can i use</a></div>
+    </section>
+
+
+    <section class="slide">
+        <h2>Грид и Флекс. Сравнение</h2>
+        <div class="content">
+            <div class="columns two">
+                <div>
+                    <div>Флекс</div>
+                    <ul>
+                        <li><mark class="item secondary">Одно измерение</mark> - строка или столбец</li>
+                    </ul>
+                </div>
+                <div>
+                    <div>Грид</div>
+                    <ul>
+                        <li><mark class="item secondary">Два измерения</mark> - строка и столбец</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <img class="image_centered" src="./pictures/i-know-css-grid-now.jpg">
+    </section>
+
+    <section class="slide">
+        <h2>Ссылки</h2>
+        <!-- сначала раскладки верстали на наблицах, потом начали верстать с использованием флоатов и, наконец, в 2017 году браузеры поддержали grid -->
+        <div class="content">
+            <a href="https://css-tricks.com/snippets/css/complete-guide-grid/#animation">A Complete Guide to Grid</a><br>
+            <a href="http://cssgridgarden.com/#ru">Игра про grid</a>
+        </div>
+    </section>
+
+    <div class="progress"></div>
+
+    <script src="./shower.js"></script>
+	<script src="lesson.js"></script>
+</body>
+</html>
